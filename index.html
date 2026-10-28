@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Test your typing speed, improve your accuracy, and track your progress with Typing Speed Tester."
+    >
+
+    <meta name="theme-color" content="#101114">
+
+    <title>Typing Speed Tester | TypeFlow</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Header -->
+        <header class="header">
+            <a href="#" class="logo">
+                <span class="logo-icon">T</span>
+                <span>Type<span class="accent">Flow</span></span>
+            </a>
+
+            <div class="header-label">
+                TYPING SPEED TESTER
+            </div>
+        </header>
+
+
+        <!-- Main -->
+        <main>
+
+            <!-- Intro -->
+            <section class="intro">
+                <span class="eyebrow">PRACTICE. IMPROVE. REPEAT.</span>
+
+                <h1>
+                    Find your typing <span>flow.</span>
+                </h1>
+
+                <p>
+                    Test your speed, sharpen your accuracy, and become
+                    a faster, more confident typist.
+                </p>
+            </section>
+
+
+            <!-- Statistics -->
+            <section class="stats-grid" aria-label="Typing statistics">
+
+                <article class="stat-card">
+                    <span class="stat-label">WPM</span>
+                    <strong id="wpm">0</strong>
+                    <span class="stat-description">Words per minute</span>
+                </article>
+
+                <article class="stat-card">
+                    <span class="stat-label">ACCURACY</span>
+                    <strong id="accuracy">100%</strong>
+                    <span class="stat-description">Correct characters</span>
+                </article>
+
+                <article class="stat-card">
+                    <span class="stat-label">TIME LEFT</span>
+                    <strong id="timeLeft">60</strong>
+                    <span class="stat-description">Seconds remaining</span>
+                </article>
+
+                <article class="stat-card">
+                    <span class="stat-label">ERRORS</span>
+                    <strong id="errors">0</strong>
+                    <span class="stat-description">Incorrect characters</span>
+                </article>
+
+            </section>
+
+
+            <!-- Test Panel -->
+            <section class="test-panel">
+
+                <div class="test-toolbar">
+
+                    <div class="duration-control">
+                        <span class="toolbar-label">DURATION</span>
+
+                        <div class="duration-options">
+                            <button
+                                type="button"
+                                class="duration-button"
+                                data-duration="30"
+                            >
+                                30s
+                            </button>
+
+                            <button
+                                type="button"
+                                class="duration-button active"
+                                data-duration="60"
+                            >
+                                60s
+                            </button>
+
+                            <button
+                                type="button"
+                                class="duration-button"
+                                data-duration="120"
+                            >
+                                120s
+                            </button>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="restart-button"
+                        id="restartButton"
+                    >
+                        ↻ Restart
+                    </button>
+
+                </div>
+
+
+                <!-- Passage -->
+                <div
+                    class="passage-container"
+                    id="passageContainer"
+                    tabindex="0"
+                    role="group"
+                    aria-label="Typing passage. Select this area and start typing."
+                >
+                    <div class="passage" id="passage"></div>
+                </div>
+
+
+                <!-- Typing Input -->
+                <label class="input-label" for="typingInput">
+                    START TYPING BELOW
+                </label>
+
+                <textarea
+                    id="typingInput"
+                    class="typing-input"
+                    placeholder="Click here and begin typing the passage above..."
+                    spellcheck="false"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    rows="3"
+                    disabled
+                ></textarea>
+
+
+                <div class="test-footer">
+                    <p id="testStatus" aria-live="polite">
+                        Click the typing area to begin.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="newPassageButton"
+                        class="text-button"
+                    >
+                        New Passage ↗
+                    </button>
+                </div>
+
+            </section>
+
+
+            <!-- Results -->
+            <section class="results-panel" id="resultsPanel" hidden>
+
+                <div class="results-icon">✓</div>
+
+                <span class="eyebrow">TEST COMPLETED</span>
+
+                <h2>Your results are in.</h2>
+
+                <p class="results-description">
+                    Every test is a step toward better typing.
+                </p>
+
+                <div class="result-summary">
+
+                    <div>
+                        <span>Final WPM</span>
+                        <strong id="finalWpm">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Accuracy</span>
+                        <strong id="finalAccuracy">100%</strong>
+                    </div>
+
+                    <div>
+                        <span>Total Errors</span>
+                        <strong id="finalErrors">0</strong>
+                    </div>
+
+                </div>
+
+                <p class="personal-best" id="personalBest">
+                    Personal best: 0 WPM
+                </p>
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="tryAgainButton"
+                >
+                    Try Again →
+                </button>
+
+            </section>
+
+
+            <!-- Instructions -->
+            <section class="instructions">
+
+                <h2>How it works</h2>
+
+                <div class="instruction-grid">
+
+                    <article>
+                        <span class="instruction-number">01</span>
+                        <h3>Choose your time</h3>
+                        <p>
+                            Select a 30, 60, or 120-second test.
+                        </p>
+                    </article>
+
+                    <article>
+                        <span class="instruction-number">02</span>
+                        <h3>Start typing</h3>
+                        <p>
+                            Type the displayed passage as accurately as possible.
+                        </p>
+                    </article>
+
+                    <article>
+                        <span class="instruction-number">03</span>
+                        <h3>Track progress</h3>
+                        <p>
+                            Review your speed, accuracy, errors, and personal best.
+                        </p>
+                    </article>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                © <span id="currentYear"></span> TypeFlow.
+                Built to help you improve.
+            </p>
+
+            <p>Consistency beats speed without accuracy.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
